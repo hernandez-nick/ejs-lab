@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>
+        <%= `${restaurant.name} - Full Menu` %>
+    </title>
+
+
 </head>
 
 <body>
-    <%- include('./partials/nav') %>
+
+<%- include('./partials/nav') %>
     
     <h1>Full Menu</h1>
 
@@ -20,7 +25,10 @@
         <% if (items.length) { %>
             <h2><%= categoryLabels[category] %></h2>
             <% items.forEach(item => { %>
-                <h3><%= item.name %></h3>
+                <h3>
+                    <%= item.name %>
+                <% if (item.rating === 5) { %>⭐<% } %>
+                </h3>
                 <p>Price: $<%= item.price %></p>
                 <p>Rating: <%= item.rating %>/5</p>
                 <p><%= item.details %></p>
@@ -28,8 +36,6 @@
         <% } %>
     <% }) %>
 
-
+<h6>⭐ = GUEST FAVORITE</h6>
     
 </body>
-
-</html>
